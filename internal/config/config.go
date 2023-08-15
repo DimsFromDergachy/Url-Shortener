@@ -1,3 +1,7 @@
+package config
+
+import "time"
+
 type Config struct {
     Env         string      `yaml:"env" env-default:"development"`
     StoragePath string      `yaml:"storage_path" env-required:"true"`
