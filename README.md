@@ -3,11 +3,13 @@ A trained project inspired by [@ntuzov](https://habr.com/en/companies/selectel/a
 
 ## The roadmap
 
+Начало - `13.08.2023`
+
 Step | Status | Done
 --- | :---: | ---
 Выбор библиотек | ✅ | `Day 2`
-Конфигурация приложения | ... |
-Настраиваем logger
+Конфигурация приложения | ✅ | `Day 3`
+Настраиваем logger | ... |
 Пишем Storage
 Handlers — обработчики запросов
 Авторизация
