@@ -5,6 +5,8 @@ import (
 	"os"
 
 	"github.com/DimsFromDergachy/Url-Shortener/internal/config"
+	"github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
+	"github.com/DimsFromDergachy/Url-Shortener/internal/storage/sqlite"
 )
 
 const (
@@ -21,6 +23,11 @@ func main() {
 
     log.Info("initializing server", slog.String("address", cfg.Address))
     log.Debug("logger debug mode enabled")
+
+    storage, err := sqlite.New(cfg.StoragePath)
+    if err != nil {
+        log.Error("failed to initialize storage", sl.Err(err))
+    }
 }
 
 func setupLogger(env string) *slog.Logger {
