@@ -7,6 +7,8 @@ import (
 	"github.com/DimsFromDergachy/Url-Shortener/internal/config"
 	"github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
 	"github.com/DimsFromDergachy/Url-Shortener/internal/storage/sqlite"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 const (
@@ -28,6 +30,13 @@ func main() {
     if err != nil {
         log.Error("failed to initialize storage", sl.Err(err))
     }
+
+    router := chi.NewRouter()
+
+    router.Use(middleware.RequestID)
+    router.Use(middleware.Logger)
+    router.Use(middleware.Recoverer)
+    router.Use(middleware.URLFormat)
 }
 
 func setupLogger(env string) *slog.Logger {
