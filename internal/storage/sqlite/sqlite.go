@@ -1,7 +1,6 @@
 package sqlite
 
 import (
-	"crypto/internal/alias"
 	"database/sql"
 	"errors"
 	"fmt"
