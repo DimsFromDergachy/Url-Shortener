@@ -37,6 +37,7 @@ func main() {
     router.Use(middleware.Logger)
     router.Use(middleware.Recoverer)
     router.Use(middleware.URLFormat)
+    router.Use(mwLogger.New(log))
 }
 
 func setupLogger(env string) *slog.Logger {
