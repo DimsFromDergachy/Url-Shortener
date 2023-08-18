@@ -1,14 +1,14 @@
 package main
 
 import (
-	"log/slog"
-	"os"
+    "log/slog"
+    "os"
 
-	"github.com/DimsFromDergachy/Url-Shortener/internal/config"
-	"github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
-	"github.com/DimsFromDergachy/Url-Shortener/internal/storage/sqlite"
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+    "github.com/DimsFromDergachy/Url-Shortener/internal/config"
+    "github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
+    "github.com/DimsFromDergachy/Url-Shortener/internal/storage/sqlite"
+    "github.com/go-chi/chi/v5"
+    "github.com/go-chi/chi/v5/middleware"
 )
 
 const (

@@ -1,12 +1,12 @@
 package sqlite
 
 import (
-	"database/sql"
-	"errors"
-	"fmt"
+    "database/sql"
+    "errors"
+    "fmt"
 
-	"github.com/DimsFromDergachy/Url-Shortener/internal/storage"
-	"github.com/mattn/go-sqlite3"
+    "github.com/DimsFromDergachy/Url-Shortener/internal/storage"
+    "github.com/mattn/go-sqlite3"
 )
 
 type Storage struct {
