@@ -5,6 +5,7 @@ import (
     "os"
 
     "github.com/DimsFromDergachy/Url-Shortener/internal/config"
+    mwLogger "github.com/DimsFromDergachy/Url-Shortener/internal/http-server/middleware/logger"
     "github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
     "github.com/DimsFromDergachy/Url-Shortener/internal/storage/sqlite"
     "github.com/go-chi/chi/v5"
