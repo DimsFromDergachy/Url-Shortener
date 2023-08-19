@@ -10,6 +10,7 @@ import (
     "github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
     "github.com/go-chi/chi/v5/middleware"
     "github.com/go-chi/render"
+    "github.com/go-playground/validator"
 )
 
 type Request struct {
@@ -54,5 +55,15 @@ func New(log *slog.Logger, urlSaver URLSaver) http.HandlerFunc {
         }
 
         log.Info("request body decoded", slog.Any("req", req))
+
+        if err := validator.New().Struct(req); err != nil {
+            validateErr := err.(validator.ValidationErrors)
+
+            log.Error("invalid request", sl.Err(err))
+
+            render.JSON(w, r, resp.ValidationError(validateErr))
+
+            return
+        }
     }
 }
