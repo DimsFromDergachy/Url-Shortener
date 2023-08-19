@@ -41,20 +41,14 @@ func New(log *slog.Logger, urlSaver URLSaver) http.HandlerFunc {
         if errors.Is(err, io.EOF) {
             log.Error("request body is empty")
 
-            render.JSON(w, r, resp.Response {
-                Status: resp.StatusError,
-                Error: "empty request",
-            })
+            render.JSON(w, r, resp.Error("empty request"))
 
             return
         }
         if err != nil {
             log.Error("failed to decode request body", sl.Err(err))
 
-            render.JSON(w, r, resp.Response {
-                Status: resp.StatusError,
-                Error: "failed to decode request",
-            })
+            render.JSON(w, r, resp.Error("failed to decode request"))
 
             return
         }
