@@ -1,6 +1,10 @@
 # Url-Shortener
 A trained project inspired by [@ntuzov](https://habr.com/en/companies/selectel/articles/747738/)
 
+## Local run
+   * `go build cmd/url-shortener/main.go`
+   * `CONFIG_PATH=./config/local.yaml ./main`
+
 ## The roadmap
 
 Начало - `13.08.2023`
