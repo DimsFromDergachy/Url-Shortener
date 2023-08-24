@@ -96,9 +96,6 @@ func (s *Storage) DeleteURL(alias string) error {
     }
 
     _, err = stmt.Exec(alias)
-    if errors.Is(err, sql.ErrNoRows) {
-        return storage.ErrURLNotFound
-    }
     if err != nil {
         return fmt.Errorf("%s: execute statement: %w", op, err)
     }

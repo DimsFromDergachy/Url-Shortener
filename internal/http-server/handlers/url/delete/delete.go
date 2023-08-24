@@ -1,13 +1,11 @@
 package delete
 
 import (
-    "errors"
     "log/slog"
     "net/http"
 
     resp "github.com/DimsFromDergachy/Url-Shortener/internal/lib/api/response"
     "github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
-    "github.com/DimsFromDergachy/Url-Shortener/internal/storage"
     "github.com/go-chi/chi/v5"
     "github.com/go-chi/chi/v5/middleware"
     "github.com/go-chi/render"
@@ -37,13 +35,6 @@ func New(log *slog.Logger, urlRemover URLRemover) http.HandlerFunc {
         }
 
         err := urlRemover.DeleteURL(alias)
-        if errors.Is(err, storage.ErrURLNotFound) {
-            log.Info("url not found", "alias", alias)
-
-            render.JSON(w, r, resp.Error("not found"))
-
-            return
-        }
         if err != nil {
             log.Error("failed to remove url", sl.Err(err))
 
