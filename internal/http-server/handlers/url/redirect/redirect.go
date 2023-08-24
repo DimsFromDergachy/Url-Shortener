@@ -1,16 +1,16 @@
 package redirect
 
 import (
-	"errors"
-	"log/slog"
-	"net/http"
+    "errors"
+    "log/slog"
+    "net/http"
 
-	resp "github.com/DimsFromDergachy/Url-Shortener/internal/lib/api/response"
-	"github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
-	"github.com/DimsFromDergachy/Url-Shortener/internal/storage"
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
-	"github.com/go-chi/render"
+    resp "github.com/DimsFromDergachy/Url-Shortener/internal/lib/api/response"
+    "github.com/DimsFromDergachy/Url-Shortener/internal/lib/logger/sl"
+    "github.com/DimsFromDergachy/Url-Shortener/internal/storage"
+    "github.com/go-chi/chi/v5"
+    "github.com/go-chi/chi/v5/middleware"
+    "github.com/go-chi/render"
 )
 
 //go:generate go run github.com/vektra/mockery/v2@v2.32.4 --name=URLGetter
@@ -31,7 +31,7 @@ func New(log *slog.Logger, urlGetter URLGetter) http.HandlerFunc {
         if alias == "" {
             log.Info("alias is empty")
 
-            render.JSON(w, r, resp.Error("not found"))
+            render.JSON(w, r, resp.Error("alias is empty"))
 
             return
         }
