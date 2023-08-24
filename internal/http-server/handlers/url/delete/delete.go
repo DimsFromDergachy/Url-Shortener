@@ -15,7 +15,7 @@ import (
 
 //go:generate go run github.com/vektra/mockery/v2@v2.32.4 --name=URLRemover
 type URLRemover interface {
-    RemoveURL(alias string) error
+    DeleteURL(alias string) error
 }
 
 func New(log *slog.Logger, urlRemover URLRemover) http.HandlerFunc {
@@ -36,7 +36,7 @@ func New(log *slog.Logger, urlRemover URLRemover) http.HandlerFunc {
             return
         }
 
-        err := urlRemover.RemoveURL(alias)
+        err := urlRemover.DeleteURL(alias)
         if errors.Is(err, storage.ErrURLNotFound) {
             log.Info("url not found", "alias", alias)
 

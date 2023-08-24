@@ -8,6 +8,7 @@ import (
     "syscall"
 
     "github.com/DimsFromDergachy/Url-Shortener/internal/config"
+    "github.com/DimsFromDergachy/Url-Shortener/internal/http-server/handlers/url/delete"
     "github.com/DimsFromDergachy/Url-Shortener/internal/http-server/handlers/url/redirect"
     "github.com/DimsFromDergachy/Url-Shortener/internal/http-server/handlers/url/save"
     mwLogger "github.com/DimsFromDergachy/Url-Shortener/internal/http-server/middleware/logger"
@@ -46,6 +47,7 @@ func main() {
     router.Use(mwLogger.New(log))
     router.Post("/", save.New(log, storage))
     router.Get("/{alias}", redirect.New(log, storage))
+    router.Delete("/{alias}", delete.New(log, storage))
 
     log.Info("starting server")
 
