@@ -7,5 +7,5 @@ POST http://localhost:8082/
 HTTP 200
 [Asserts]
 jsonpath "$.status" == "OK"
-jsonpath "$.error" == ""
+jsonpath "$.error" not exists
 jsonpath "$.alias" == "test_alias"
