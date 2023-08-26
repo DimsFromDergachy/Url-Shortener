@@ -1,7 +1,7 @@
 POST http://localhost:8082/
 {
-    "url": "https://duckduckgo.com",
-    "alias": "test_alias"
+	"url": "https://duckduckgo.com",
+	"alias": "test_alias"
 }
 
 HTTP 200
