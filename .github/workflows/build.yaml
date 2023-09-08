@@ -17,3 +17,5 @@ jobs:
         run: |
           go mod download
           go build -o url-shortener ./cmd/url-shortener
+      - name: Test
+        run: go test ./internal/**/*_test.go
